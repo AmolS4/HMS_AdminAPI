@@ -7,16 +7,16 @@ using System.Collections.Generic;
 
 namespace HMSAdmin.DBO.Models
 {
-    public partial class Nurse
+    public partial class Physician
     {
         public int Id { get; set; }
         public string Email { get; set; }
-        public string NurseId { get; set; }
-        public string NurseName { get; set; }
+        public string PhysicianName { get; set; }
         public string Ssn { get; set; }
+        public string PhysicianId { get; set; }
+        public string Title { get; set; }
         public DateTime? LastUpdatedOn { get; set; }
-        public string Status { get; set; }
 
-        public virtual Login NurseNavigation { get; set; }
+        public virtual Login PhysicianNavigation { get; set; }
     }
 }

@@ -1,34 +1,35 @@
-﻿using HMSAdmin.DBO.Models;
-using HMSAdmin.Services.Contracts;
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using HMSAdmin.DBO.Models;
+using HMSAdmin.Services.Contracts;
+using Microsoft.EntityFrameworkCore;
 
 namespace HMSAdmin.Services.Services
 {
-    public class AdminService : IAdmin<Patient>
+    public class PhysicianService : IAdmin<Physician>
     {
+
         private HospitalManagementContext context;
 
-        public AdminService(HospitalManagementContext c)
+        public PhysicianService(HospitalManagementContext c)
         {
 
             context = c;
         }
-      
-        public async Task<IEnumerable<Patient>> GetAsync()
+
+        public async Task<IEnumerable<Physician>> GetAsync()
         {
-            var result = await context.Patient.ToListAsync();
+            var result = await context.Physician.ToListAsync();
             return result;
         }
 
-        public async Task<Patient> GetAsync(string id)
+        public async Task<Physician> GetAsync(string id)
         {
             try
             {
-                var result = await context.Patient.FindAsync(id);
+                var result = await context.Physician.FindAsync(id);
                 return result;
             }
             catch (Exception ex)
@@ -38,16 +39,16 @@ namespace HMSAdmin.Services.Services
             }
         }
 
-        public async Task<Patient> UpdateAsync(string id, Patient entity)
+        public async Task<Physician> UpdateAsync(string id, string status)
         {
             try
             {
-                var result = await context.Patient.FindAsync(id);
+                var result = await context.Physician.FindAsync(id);
                 if (result == null) throw new Exception($"Record not found, update operation is failed");
 
 
-                result.Status = entity.Status;
-               
+                result.Status = status;
+
 
                 // modify the record 
                 //context.Entry(result).State = EntityState.Modified;

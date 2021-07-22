@@ -10,6 +10,6 @@ namespace HMSAdmin.Services.Contracts
 
         Task<IEnumerable<TEntity>> GetAsync();
         Task<TEntity> GetAsync(string id);
-        Task<TEntity> UpdateAsync(string id, TEntity entity);
+        Task<TEntity> UpdateAsync(string id, string status);
     }
 }

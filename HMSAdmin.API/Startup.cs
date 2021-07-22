@@ -35,8 +35,11 @@ namespace HMSAdmin.API
             });
 
             //Registration of custom dependencies
-            services.AddScoped<IAdmin<Patient>, AdminService>();
-
+            services.AddScoped<IAdmin<Patient>, PatientService>();
+            services.AddScoped<IAdmin<Physician>, PhysicianService>();
+            services.AddScoped<IAdmin<Nurse>, NurseService>();
+            services.AddScoped<IMasterData, MasterService>();
+            services.AddCors();
             services.AddSwaggerGen();
             services.AddControllers();
         }
@@ -59,6 +62,12 @@ namespace HMSAdmin.API
             });
 
             app.UseAuthorization();
+
+            app.UseCors(x => x
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+               .SetIsOriginAllowed(origin => true) // allow any origin
+               .AllowCredentials()); // allow credentials
 
             app.UseEndpoints(endpoints =>
             {

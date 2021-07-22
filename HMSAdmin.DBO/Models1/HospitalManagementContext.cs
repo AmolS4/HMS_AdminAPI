@@ -297,8 +297,6 @@ namespace HMSAdmin.DBO.Models
                     .HasColumnName("SSN")
                     .HasMaxLength(50);
 
-                entity.Property(e => e.Status).HasMaxLength(20);
-
                 entity.HasOne(d => d.NurseNavigation)
                     .WithOne(p => p.Nurse)
                     .HasForeignKey<Nurse>(d => d.NurseId)
@@ -598,8 +596,6 @@ namespace HMSAdmin.DBO.Models
                 entity.Property(e => e.Ssn)
                     .HasColumnName("SSN")
                     .HasMaxLength(50);
-
-                entity.Property(e => e.Status).HasMaxLength(20);
 
                 entity.Property(e => e.Title).HasMaxLength(50);
 

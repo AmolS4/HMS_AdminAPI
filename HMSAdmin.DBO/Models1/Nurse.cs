@@ -15,7 +15,6 @@ namespace HMSAdmin.DBO.Models
         public string NurseName { get; set; }
         public string Ssn { get; set; }
         public DateTime? LastUpdatedOn { get; set; }
-        public string Status { get; set; }
 
         public virtual Login NurseNavigation { get; set; }
     }

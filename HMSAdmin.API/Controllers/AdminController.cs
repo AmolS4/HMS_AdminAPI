@@ -37,12 +37,14 @@ namespace HMSAdmin.API.Controllers
         }
 
 
-        [HttpPut("updatepatient/{id}")] // the id is accepted in Header as URL Parameter
-        public async Task<IActionResult> PutAsync(string id, Patient data)
+        //[HttpPost("updatepatient/{id}")] // the id is accepted in Header as URL Parameter
+        //[HttpPost,Route("updatepatient")]
+        [HttpGet, Route("updatepatient")]
+        public IActionResult PutAsync(string id, string status)
         {
             if (ModelState.IsValid)
             {
-                var result = await adminServ.UpdateAsync(id, data);
+                var result =  adminServ.UpdateAsync(id, status);
                 return Ok(result);
             }
             else
@@ -50,6 +52,20 @@ namespace HMSAdmin.API.Controllers
                 return BadRequest(ModelState);
             }
         }
+
+        //[HttpPut("updatestatus/{id}")] // the id is accepted in Header as URL Parameter
+        //public async Task<IActionResult> updatestatus(string id, string status)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var result = await adminServ.UpdateAsync(id, status);
+        //        return Ok(result);
+        //    }
+        //    else
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+        //}
 
     }
 }
