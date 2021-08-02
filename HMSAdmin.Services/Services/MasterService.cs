@@ -38,24 +38,28 @@ namespace HMSAdmin.Services.Services
         // }
 
 
-        public bool AddAllergyData()
+        public bool AddAllergyData(AllergyData model)
         {
-            //bool success = false;
-            //try
-            //{
-            //    Allergy allergy = new Allergy()
-            //    {
+            bool success = false;
+            try
+            {
+                Allergy allergy = new Allergy()
+                {
+                    AllergyName = model.AllergyName,
+                    AllergyDescription = model.AllergyDescription,
+                    AllergyType = model.AllergyType,
 
+                };
+                context.Allergy.Add(allergy);
+                context.SaveChanges();
 
-            //    };
+            }
+            catch (Exception ex )
+            {
 
-            //}
-            //catch (Exception)
-            //{
-
-            //    throw;
-            //}
-            throw new NotImplementedException();
+                throw;
+            }
+            return success;
         }
 
 
@@ -63,19 +67,90 @@ namespace HMSAdmin.Services.Services
 
 
 
-    public bool AddDiagnosisData()
+        public bool AddDiagnosisData(DianosisData model)
         {
-            throw new NotImplementedException();
+            bool success = false;
+            try
+            {
+                Diagnosis diagnosisdata = new Diagnosis()
+                {
+
+
+                    //DiagnosisType = model.DiagnosisType,
+                    DiagnosisDescription = model.DiagnosisDescription,
+                    DiagnosisIsDepricated = model.IsDepricated
+                    // ActiveIngredient = model.ActiveIngredient,
+
+
+                   };
+                context.Diagnosis.Add(diagnosisdata);
+                context.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return success;
         }
 
-        public bool AddMedicationData()
+        public bool AddMedicationData(MedicationData model)
         {
-            throw new NotImplementedException();
+            bool success = false;
+            try
+            {
+                DrugData drugdata = new DrugData()
+                {
+
+
+                    DrugName = model.DrugName,
+                    DrugForm = model.DrugForm,
+                    DrugStrength = model.DrugStrength,
+                   // ActiveIngredient = model.ActiveIngredient,
+                    DrugManufacturerName = model.DrugManufacturerName
+
+
+
+                };
+                context.DrugData.Add(drugdata);
+                context.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return success;
         }
 
-        public bool AddProcedureData()
+        public bool AddProcedureData(ProcedureData model)
         {
-            throw new NotImplementedException();
+            bool success = false;
+            try
+            {
+                Procedure procedure = new Procedure()
+                {
+                   
+
+                    ProcedureCode  = model.ProcedureCode,
+                    ProcedureDescription=model.ProcedureDescription,
+                    ProcedureIsDepricated = model.IsProcedureDepricated
+                      
+
+
+                 };
+                context.Procedure.Add(procedure);
+                context.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return success;
         }
 
         public List<AllergyData> GetAllergyDetail()
@@ -85,7 +160,7 @@ namespace HMSAdmin.Services.Services
 
 
 
-               //AllergyId=e.AllergyId, data type in string
+                AllergyId=e.AllergyId, 
                 AllergyName=e.AllergyName,
                 AllergyDescription=e.AllergyDescription,
                 AllergyType=e.AllergyType
@@ -101,7 +176,7 @@ namespace HMSAdmin.Services.Services
             var result = context.Diagnosis.Select(e => new DianosisData
             {
 
-               // DiagnosisId=e.DiagnosisId, data type string change
+                DiagnosisId=e.DiagnosisId, 
                 DiagnosisDescription =e.DiagnosisDescription,
                 IsDepricated=e.DiagnosisIsDepricated
                 //DiagnosisType

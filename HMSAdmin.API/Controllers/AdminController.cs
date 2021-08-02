@@ -1,4 +1,5 @@
 ﻿using HMSAdmin.DBO.Models;
+using HMSAdmin.DBO.Providers;
 using HMSAdmin.Services.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -39,12 +40,12 @@ namespace HMSAdmin.API.Controllers
 
         //[HttpPost("updatepatient/{id}")] // the id is accepted in Header as URL Parameter
         //[HttpPost,Route("updatepatient")]
-        [HttpGet, Route("updatepatient")]
-        public IActionResult PutAsync(string id, string status)
+        [HttpPut, Route("updatepatient")]
+        public IActionResult updatestatus([FromBody] Status patient)
         {
             if (ModelState.IsValid)
             {
-                var result =  adminServ.UpdateAsync(id, status);
+                var result =  adminServ.UpdateAsync(patient);
                 return Ok(result);
             }
             else

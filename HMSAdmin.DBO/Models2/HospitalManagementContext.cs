@@ -54,7 +54,9 @@ namespace HMSAdmin.DBO.Models
                 entity.HasKey(e => e.AllergyId)
                     .HasName("PK_Allergy_Id");
 
-                entity.Property(e => e.AllergyId).HasColumnName("Allergy_Id");
+                entity.Property(e => e.AllergyId)
+                    .HasColumnName("Allergy_Id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.AllergyClinicalInformation).HasColumnName("Allergy_Clinical_Information");
 
@@ -68,7 +70,9 @@ namespace HMSAdmin.DBO.Models
                     .HasColumnName("Allergy_Type")
                     .HasMaxLength(50);
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .ValueGeneratedOnAdd();
             });
 
             modelBuilder.Entity<AllergyType>(entity =>
@@ -175,7 +179,9 @@ namespace HMSAdmin.DBO.Models
             {
                 entity.HasKey(e => e.DiagnosisId);
 
-                entity.Property(e => e.DiagnosisId).HasColumnName("Diagnosis_Id");
+                entity.Property(e => e.DiagnosisId)
+                    .HasColumnName("Diagnosis_Id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.DiagnosisCode)
                     .HasColumnName("Diagnosis_Code")
@@ -185,14 +191,18 @@ namespace HMSAdmin.DBO.Models
 
                 entity.Property(e => e.DiagnosisIsDepricated).HasColumnName("Diagnosis_Is_Depricated");
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .ValueGeneratedOnAdd();
             });
 
             modelBuilder.Entity<DrugData>(entity =>
             {
                 entity.HasKey(e => e.DrugId);
 
-                entity.Property(e => e.DrugId).HasColumnName("Drug_ID");
+                entity.Property(e => e.DrugId)
+                    .HasColumnName("Drug_ID")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.DrugForm)
                     .HasColumnName("Drug_Form")
@@ -214,7 +224,9 @@ namespace HMSAdmin.DBO.Models
                     .HasColumnName("Drug_Strength")
                     .HasMaxLength(50);
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .ValueGeneratedOnAdd();
             });
 
             modelBuilder.Entity<ExceptionLog>(entity =>

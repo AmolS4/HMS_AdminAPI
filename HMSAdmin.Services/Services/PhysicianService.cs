@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using HMSAdmin.DBO.Models;
+using HMSAdmin.DBO.Providers;
 using HMSAdmin.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 
@@ -39,15 +40,15 @@ namespace HMSAdmin.Services.Services
             }
         }
 
-        public async Task<Physician> UpdateAsync(string id, string status)
+        public async Task<Physician> UpdateAsync(Status status)
         {
             try
             {
-                var result = await context.Physician.FindAsync(id);
+                var result = await context.Physician.FindAsync(status.id);
                 if (result == null) throw new Exception($"Record not found, update operation is failed");
 
 
-                result.Status = status;
+               // result.Status = status;
 
 
                 // modify the record 

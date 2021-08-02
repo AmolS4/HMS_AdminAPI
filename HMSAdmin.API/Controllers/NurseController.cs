@@ -1,4 +1,5 @@
 ﻿using HMSAdmin.DBO.Models;
+using HMSAdmin.DBO.Providers;
 using HMSAdmin.Services.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -37,11 +38,11 @@ namespace HMSAdmin.API.Controllers
         }
 
         [HttpPut("updatenurse/{id}")] // the id is accepted in Header as URL Parameter
-        public async Task<IActionResult> PutAsync(string id, string status)
+        public async Task<IActionResult> PutAsync(Status nurse)
         {
             if (ModelState.IsValid)
             {
-                var result = await nurseserv.UpdateAsync(id, status);
+                var result = await nurseserv.UpdateAsync(nurse);
                 return Ok(result);
             }
             else

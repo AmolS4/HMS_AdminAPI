@@ -54,7 +54,9 @@ namespace HMSAdmin.DBO.Models
                 entity.HasKey(e => e.AllergyId)
                     .HasName("PK_Allergy_Id");
 
-                entity.Property(e => e.AllergyId).HasColumnName("Allergy_Id");
+                entity.Property(e => e.AllergyId)
+                    .HasColumnName("Allergy_Id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.AllergyClinicalInformation).HasColumnName("Allergy_Clinical_Information");
 
@@ -68,7 +70,9 @@ namespace HMSAdmin.DBO.Models
                     .HasColumnName("Allergy_Type")
                     .HasMaxLength(50);
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .ValueGeneratedOnAdd();
             });
 
             modelBuilder.Entity<AllergyType>(entity =>

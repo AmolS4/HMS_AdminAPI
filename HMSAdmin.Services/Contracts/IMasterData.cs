@@ -15,11 +15,11 @@ namespace HMSAdmin.Services.Contracts
         List<AllergyData> GetAllergyDetail();
 
 
-        bool AddDiagnosisData();
+        bool AddDiagnosisData(DianosisData model);
 
-        bool AddMedicationData();
-        bool AddProcedureData();
-        bool AddAllergyData();
+        bool AddMedicationData(MedicationData model);
+        bool AddProcedureData(ProcedureData model);
+        bool AddAllergyData(AllergyData model);
 
     }
 }

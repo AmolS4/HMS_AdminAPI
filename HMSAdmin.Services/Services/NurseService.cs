@@ -1,4 +1,5 @@
 ﻿using HMSAdmin.DBO.Models;
+using HMSAdmin.DBO.Providers;
 using HMSAdmin.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -37,15 +38,15 @@ namespace HMSAdmin.Services.Services
             }
         }
 
-        public async Task<Nurse> UpdateAsync(string id, string status)
+        public async Task<Nurse> UpdateAsync(Status status)
         {
             try
             {
-                var result = await context.Nurse.FindAsync(id);
+                var result = await context.Nurse.FindAsync(status.id);
                 if (result == null) throw new Exception($"Record not found, update operation is failed");
 
 
-                result.Status = status;
+                //result.Status = status;
 
 
                 // modify the record 

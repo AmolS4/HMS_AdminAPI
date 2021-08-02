@@ -30,7 +30,7 @@ namespace HMSAdmin.DBO.Providers
 
     public class AllergyData
     {
-        public string AllergyId { get; set; }
+        public int AllergyId { get; set; }
         public string AllergyType { get; set; }
         public string AllergyName { get; set; }
 
@@ -39,7 +39,7 @@ namespace HMSAdmin.DBO.Providers
     }
     public class DianosisData
     {
-        public string DiagnosisId { get; set; }
+        public int DiagnosisId { get; set; }
 
         public string DiagnosisType { get; set; }
         public string DiagnosisDescription { get; set; }
